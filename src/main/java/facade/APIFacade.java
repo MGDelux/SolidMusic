@@ -40,9 +40,11 @@ public class APIFacade {
       EntityManager em = emf.createEntityManager();
       List<APIKeysEntity> apikey= new ArrayList<>();
       try{
+          System.out.println("get api");
         TypedQuery<APIKeysEntity> query = em.createQuery("SELECT c FROM APIKeysEntity c WHERE c.Service LIKE :servName", APIKeysEntity.class)
                 .setParameter("servName", "genius");
         apikey = query.getResultList();
+          System.out.println(apikey.get(0));
       }catch(Exception e){
     e.toString();
       }
