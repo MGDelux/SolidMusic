@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -35,6 +39,11 @@ public class User implements Serializable {
     @JoinColumn(name = "role_name", referencedColumnName = "role_name")})
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
+  
+  
+  
+  @OneToMany(targetEntity = PlaylistEnitity.class,cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
+  private List<PlaylistEnitity> playlist;
 
   public List<String> getRolesAsStrings() {
     if (roleList.isEmpty()) {
@@ -54,10 +63,20 @@ public class User implements Serializable {
         return(BCrypt.checkpw(pw,userPass));
     }
 
-  public User(String userName, String userPass) {
+  public User(String userName, String userPass ) {
     this.userName = userName;
     this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt(10));
   }
+
+    public List<PlaylistEnitity> getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(List<PlaylistEnitity> playlist) {
+        this.playlist = playlist;
+    }
+
+ 
 
 
   public String getUserName() {
@@ -88,4 +107,11 @@ public class User implements Serializable {
     roleList.add(userRole);
   }
 
+    @Override
+    public String toString() {
+        return "User{" + "userName=" + userName + ", userPass=" + userPass + ", roleList=" + roleList + ", playlist=" + playlist + '}';
+    }
+
+  
+  
 }

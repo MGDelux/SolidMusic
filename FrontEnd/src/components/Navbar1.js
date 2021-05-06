@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState,useEffect } from "react"
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
 import {Link} from "react-router-dom";
 import {SidebarData} from "./SidebarData";
 import "./Navbar.css"
@@ -62,7 +63,7 @@ function Navbar1() {
 
 
 
-function fetchmusic() {
+/*function fetchmusic() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -118,6 +119,6 @@ function fetchmusic() {
       );
     }
   }
-
+*/
 
 export default Navbar1;
