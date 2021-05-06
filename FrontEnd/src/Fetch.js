@@ -1,10 +1,14 @@
-function fetchmusic() {
+import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
+import React, { useState,useEffect } from "react"
+import Navbar1 from "./components/Navbar1"
+
+function Fetchmusic() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
  
     useEffect(() => {
-      fetch("http://localhost:8080/SolidCode-BackEnd/api/dummyAPI/all")
+      fetch("http://localhost:8080/SolidCode-BackEnd/api/solidMusic/search"+{value})
         .then(res => res.json())
         .then(
           (result) => {
@@ -29,22 +33,20 @@ function fetchmusic() {
         <Table striped bordered hover variant="dark" responsive>
         <thead>
           <tr>
-          <th scope="col">#ID</th>
-             <th scope="col">Name</th>
-             <th scope="col">Day</th>
-             <th scope="col">Time</th>
+             <th scope="col">Title name</th>
+             <th scope="col">Artist</th>
         </tr>
         </thead>
         <tbody>
           {items.map(item => (
             <>
           <tr >  
-            <td key={item.id}>
-            {item.id}
+            <td key={item.name}>
+            {item.name}
             </td>
             <td>{item.name}</td>
-            <td>{item.date.date.year}/{item.date.date.month}/{item.date.date.day}  </td>
-            <td>{item.date.time.hour}:{item.date.time.minute}:{item.date.time.second}</td>
+            <td></td>
+            <td></td>
             </tr>
            </>
           ))}
@@ -54,3 +56,5 @@ function fetchmusic() {
       );
     }
   }
+
+  export {Fetchmusic}
