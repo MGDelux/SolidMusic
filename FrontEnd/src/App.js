@@ -1,16 +1,8 @@
 import React, { useState,useEffect, Component } from "react"
 import facade from "./apiFacade";
-import test, {MyComponents,getNorris} from "./test";
-import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
+import Musichome from './Solidcode';
+import {Card, Form, Container} from "react-bootstrap"
 import "./App.css";
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import BasicExample from "./Route";
 
 function LogIn({ login }) {
   const init = { username: "", password: "" };
@@ -26,17 +18,17 @@ function LogIn({ login }) {
   }
  
   return (
-  <Container container-md>
-    <div classname= "w-responsive text-center mx-auto p-3 mt-2">
-     <Card classname="mb-3">
-       <Card.Img width="70%" src="https://miro.medium.com/max/1000/1*TjDnfpnw4gI8sZ2fvaK9zg.jpeg"/>
+  <Container >
+    <div id="mydiv" className= "w-responsive text-center mx-auto p-3 mt-2">
+     <Card className="mb-3">
+       <Card.Img width="70%" src=""/>
        <Card.Body>
-      <form classname="login-form" onChange={onChange}>
+      <form className="login-form" onChange={onChange}>
         <Card.Title>
-                <h2>SolidCode startcode</h2>
+                <h2>SolidMusic</h2>
         </Card.Title>
         <Card.Text>
-        log ind på siden med det givet passward, og du kan læse ReadMe fanen for mere info om frontenden.
+        Log in for some awesome music
       </Card.Text>
                 <div className="form-group">
                 
@@ -70,12 +62,7 @@ function LoggedIn() {
  
   return (
     <>
-    
-    <div>
-      <h2>Data Received from server</h2>
-      <h3>{dataFromServer}</h3>
-    </div>
-    <BasicExample/>
+    <Musichome/>
 </>
   )
  
@@ -98,8 +85,9 @@ function App() {
     <div>
       {!loggedIn ? (<LogIn login={login} />) :
         (<div>
-          <LoggedIn />
           <button onClick={logout}>Logout</button>
+          <LoggedIn />
+          
         </div>)}
     </div>
   )
