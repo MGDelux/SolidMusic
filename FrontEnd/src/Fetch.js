@@ -1,6 +1,6 @@
 import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
 import React, { useState,useEffect } from "react"
-import Navbar1 from "./components/Navbar1"
+
 
 function Fetchmusic() {
     const [error, setError] = useState(null);
@@ -8,13 +8,13 @@ function Fetchmusic() {
     const [items, setItems] = useState([]);
  
     useEffect(() => {
-      fetch("http://localhost:8080/SolidCode-BackEnd/api/solidMusic/search"+{value})
+      fetch("http://localhost:8080/SolidCode-BackEnd/api/solidMusic/search?q=jason derulo")
         .then(res => res.json())
         .then(
           (result) => {
             setIsLoaded(true);
-            setItems(result);
-            console.log(result);
+            setItems(result.response.hits);
+            console.log(result.response.hits);
           },
           (error) => {
             setIsLoaded(true);
@@ -40,11 +40,11 @@ function Fetchmusic() {
         <tbody>
           {items.map(item => (
             <>
-          <tr >  
-            <td key={item.name}>
-            {item.name}
+          <tr>  
+          <td>
+            
             </td>
-            <td>{item.name}</td>
+            <td>{items.result.full_title}</td>
             <td></td>
             <td></td>
             </tr>

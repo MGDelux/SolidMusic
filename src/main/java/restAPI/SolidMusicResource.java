@@ -12,6 +12,7 @@ import static java.lang.String.format;
 import static java.util.Collections.list;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -31,7 +32,7 @@ import utils.ThreadManager;
 public class SolidMusicResource {
     //wip
     @Path("/search")
-    @POST
+    @GET
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes(MediaType.APPLICATION_JSON)
     public String search(@QueryParam("q") String param ){ //TODO: ROLES // DTO

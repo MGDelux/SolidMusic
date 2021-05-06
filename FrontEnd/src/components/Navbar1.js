@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from "react"
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
 import {Link} from "react-router-dom";
 import {SidebarData} from "./SidebarData";
 import "./Navbar.css"
@@ -10,9 +9,11 @@ import {Fetchmusic} from "../Fetch";
 
 function Navbar1() {
     const [sidebar, setsidebar] = useState(false)
-
+    
     const showSidebar = () => setsidebar(!sidebar)
     
+    const [Search, setSearch] = useState('')
+
     return (
         <>
         <IconContext.Provider value={{color: "orange"}}>
@@ -22,7 +23,7 @@ function Navbar1() {
                 </Link>
                 <Link>
             <div class="searchbar">
-          <input class="search_input" type="text" name="Search" placeholder="Search..."/>
+          <input class="search_input" type="text" name="Searching" placeholder="Search..." onChange={event => setSearch(event.target.value)}/>
           <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
              </div>
              </Link>
