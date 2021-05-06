@@ -70,6 +70,7 @@ public class HTTPFetchGenius implements Callable<String>   {
         }
            String paramsEncoded =java.net.URLEncoder.encode(params,"UTF-8"); //encodes String to HTML Format to avoid 505 error 
            String Genius_AUTHKEY = apiKey.get(0).getAuthKey(); //"70VO2k3bjvjYqF7ffZ7mrkqS7Mx5BdwwAFG1Pvvs9f9rsNJk1oFbqnTTwqyzuzJu"; //Todo: DO NOT STORE IN PLAIN TEXT!
+           System.out.println(Genius_AUTHKEY);
            String baseURL = "https://api.genius.com/search?q="+paramsEncoded+"&access_token="+Genius_AUTHKEY;
          
         
@@ -85,7 +86,7 @@ public class HTTPFetchGenius implements Callable<String>   {
             jsonStr = scan.nextLine();
         }
         scan.close();
-        
+           System.out.println("Genius return: "+ jsonStr );
         this.returnValue = jsonStr;
         return jsonStr;
     }

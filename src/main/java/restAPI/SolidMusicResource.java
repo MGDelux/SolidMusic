@@ -15,6 +15,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,22 +29,12 @@ import utils.ThreadManager;
  */
 @Path("solidMusic")
 public class SolidMusicResource {
-    
-    @Path("/spotify") // TODO: use threadmanager to search spotify and return the result as JSon
+    //wip
+    @Path("/search")
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes(MediaType.APPLICATION_JSON)
-    public String searchSpotify(String param){
-        return "a string";
-    }
-    
-    
-    
-    @Path("/search/")
-    @POST
-    @Produces({MediaType.APPLICATION_JSON})
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String search(String param){ //TODO: ROLES // DTO
+    public String search(@QueryParam("q") String param ){ //TODO: ROLES // DTO
        Gson gson = new Gson();
      GeniusOuterDTO dto;
         String returnVal = " ";
@@ -71,7 +62,9 @@ public class SolidMusicResource {
         } catch(Exception e){
                   throw new WebApplicationException("Internal Server Problem. We are sorry for the inconvenience: " +e,501);
         }
-    return gson.toJson(dto);
+  //  return returnVal;
+     
+   return gson.toJson(dto);
 
     }
 }

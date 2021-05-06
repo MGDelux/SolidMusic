@@ -49,7 +49,7 @@ public class SetupUsers {
       User user = new User("user", "userpw");
       User admin = new User("admin", "adminpw");
       User ali = new User ("ali","ali");
-      APIKeysEntity genius_API = new APIKeysEntity("genius","70VO2k3bjvjYqF7ffZ7mrkqS7Mx5BdwwAFG1Pvvs9f9rsNJk1oFbqnTTwqyzuzJu");
+      APIKeysEntity genius_API = new APIKeysEntity("genius","uGiljUMy8gsJ3JUFJzCLFICsBIkRrxeNJz-3MHGOkXqjySzb3WxXzb5U0Zq1l3AU");
       Artist artist = new Artist("API PATH","HEADER IMG URL","PINK GUY","URL");
        Artist artist2 = new Artist("API PATH","HEADER IMG URL","DELUX GUY","URL");
 
@@ -62,11 +62,7 @@ public class SetupUsers {
       
       
       
-      songsInPlaylist.add(song);
-      songsInPlaylist.add(song2);
-       songsInPlaylist2.add(song3);
-      list.add(playlist);
-      list2.add(playlist2);
+    
           em.getTransaction().begin();
      em.persist(genius_API);
      
@@ -80,41 +76,50 @@ public class SetupUsers {
        em.persist(admin);
         em.getTransaction().commit();
           ThreadManager tm = new ThreadManager();
-              String value;
+            
               
         //EXAMPLE PROCESS OF GETTING MUSIC QUERY   
-          List<Song> tempSongs = new ArrayList<>();
-          List<PlaylistEnitity> tempPlaylist = new ArrayList<>();
-
-      value = tm.searchGeniusAPI("Bye Bye Bye");
-      GeniusOuterDTO dto = gson.fromJson(value, GeniusOuterDTO.class);
-      GeniusMidDTO middto; 
-       middto =  dto.getResponse();
-       List<GeniusDTO> gmd = new ArrayList<>();
-       gmd = middto.getHits();
-       List<GeniusResultDTO> rdto = new ArrayList<>();
-       for(GeniusDTO g : gmd ){
-          rdto.add(g.getResult());
-      
-       }
-        Song dtosong = new Song(rdto.get(0).getTitle(),rdto.get(0).getHeader_image_thumbnail_url(),rdto.get(0).getHeader_image_url(),rdto.get(0).getPath(),rdto.get(0).getUrl(),new Artist(rdto.get(0).getPrimary_artist().getApi_path(),rdto.get(0).getPrimary_artist().getHeader_image_url(),rdto.get(0).getPrimary_artist().getName(),rdto.get(0).getPrimary_artist().getUrl()));
-         tempSongs.add(dtosong);
+      String return_val =  tm.searchGeniusAPI("STFU");
+        System.out.println(return_val);
+        GeniusOuterDTO dto;
+        //Turn into DTO
+       dto =  gson.fromJson(return_val, GeniusOuterDTO.class);
+       
+       //get (all) title & artist fromt query
+       List<String> getAllTitle = new ArrayList<>();
+       List<String> getAllArtist = new ArrayList<>();
+        System.out.println("song test:"+dto);
+        List<GeniusDTO> geniushits;
+        geniushits = dto.getResponse().getHits();
+        for (GeniusDTO d : geniushits) {
+           getAllTitle.add(d.getResult().getTitle());
+           getAllArtist.add(d.getResult().getPrimary_artist().getName());      
+        }
+        System.out.println("ALL TITLES: "+ getAllTitle.toString()); 
+        System.out.println("ALL ARTIST: "+ getAllArtist.toString()); 
+       
+        // get "first" hit title & artist #0
+        String firstHitTitle;
+        String firstHitArtist;
+       firstHitTitle = geniushits.get(0).getResult().getTitle();
+       firstHitArtist = geniushits.get(0).getResult().getPrimary_artist().getName();
+        System.out.println("FIRT HIT: TITLE: "+firstHitTitle);
+        System.out.println("FIRT HIT: ARTIST: "+firstHitArtist);
+        //USE data above to search spotify
+        String spotifySearchParam = firstHitTitle + " " + firstHitArtist;
+       String spotifyR = tm.searchSpotifyAPI(spotifySearchParam);
+        System.out.println("Spotify search params: "+ spotifySearchParam);
+        System.out.println("SPOTIFY RESULT: "+ spotifyR );
+        
+        
+       // Song dtosong = new Song(rdto.get(0).getTitle(),rdto.get(0).getHeader_image_thumbnail_url(),rdto.get(0).getHeader_image_url(),rdto.get(0).getPath(),rdto.get(0).getUrl(),new Artist(rdto.get(0).getPrimary_artist().getApi_path(),rdto.get(0).getPrimary_artist().getHeader_image_url(),rdto.get(0).getPrimary_artist().getName(),rdto.get(0).getPrimary_artist().getUrl()));
+        // tempSongs.add(dtosong);
       // tempPlaylist user.getPlaylist();
-        System.out.println("D TO SONG: " +dtosong);
-         System.out.println(tm.searchSpotifyAPI(dtosong.getFull_title() + " " + dtosong.getArtist().getName()));
+      
                     
-  
-             
-             
-
-             
-               
-   
-
 
        
 
-        System.out.println(dto);
          System.out.println("PW1: " + user.getUserPass());
          System.out.println("PW2: " + admin.getUserPass());
          System.out.println(user);
