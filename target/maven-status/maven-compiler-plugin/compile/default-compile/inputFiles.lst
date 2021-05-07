@@ -3,7 +3,6 @@ C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\secuirty\erro
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\entities\User.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\restAPI\ApplicationConfig.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\utils\HTTPFetchGeniusOLD.java
-C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\entities\DummyEntity.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\errorhandling\API_ExceptionMapper.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\security\SharedSecret.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\utils\Hashset.java
@@ -11,13 +10,11 @@ C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\security\User
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\secuirty\errorhandling\AuthenticationException.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\entities\APIKeysEntity.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\security\JWTSecurityContext.java
-C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\utils\test.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\security\LoginEndpoint.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\dto\ApiKeyDTO.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\cors\CorsFilter.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\dto\GeniusMidDTO.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\errorhandling\GenericExceptionMapper.java
-C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\facade\testFacade.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\errorhandling\API_Exception.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\dto\GeniusOuterDTO.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\utils\HTTPFetchGenius.java
@@ -30,7 +27,6 @@ C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\facade\UserFa
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\utils\ThreadManager.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\errorhandling\NotFoundException.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\entities\Song.java
-C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\utils\DummyData.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\secuirty\errorhandling\NotAuthorizedExceptionMapper.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\security\RolesAllowedFilter.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\dto\GeniusArtistDTO.java

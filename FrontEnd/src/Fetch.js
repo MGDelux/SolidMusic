@@ -1,16 +1,24 @@
-function fetchmusic() {
+import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
+import React, { useState,useEffect } from "react"
+import  "./fetchtable.css"
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+
+function Fetchmusic()   {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
  
     useEffect(() => {
-      fetch("http://localhost:8080/SolidCode-BackEnd/api/dummyAPI/all")
+      fetch("http://localhost:8080/SolidCode-BackEnd/api/solidMusic/search?q=Sia")
         .then(res => res.json())
         .then(
           (result) => {
-            setIsLoaded(true);
+        
             setItems(result);
-            console.log(result);
+         
+              setIsLoaded(true);
+
           },
           (error) => {
             setIsLoaded(true);
@@ -24,33 +32,52 @@ function fetchmusic() {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
+
+     
       return (
-        <container className="themed-container" fluid="md">
-        <Table striped bordered hover variant="dark" responsive>
+     <div className="div-table">
+        <Table >
         <thead>
           <tr>
-          <th scope="col">#ID</th>
-             <th scope="col">Name</th>
-             <th scope="col">Day</th>
-             <th scope="col">Time</th>
+          <th scope="col"></th>
+             <th scope="col"></th>
+             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-          {items.map(item => (
+         {items.response.hits.map(item =>
             <>
-          <tr >  
-            <td key={item.id}>
-            {item.id}
+            
+          <tr>  
+            <td className="td_image">
+              
+              <img className="td_image" src = {item.result.header_image_thumbnail_url} ></img>
+              <tr>
+                <div className="trdiv">
+                 <button>SPOTIFY BUTTON</button> 
+                 <div>
+                   <button><a href={'https://genius.com/'+item.result.url}>LYRICS</a></button> 
+                </div>
+                </div>
+              </tr>
             </td>
-            <td>{item.name}</td>
-            <td>{item.date.date.year}/{item.date.date.month}/{item.date.date.day}  </td>
-            <td>{item.date.time.hour}:{item.date.time.minute}:{item.date.time.second}</td>
+          <td className="result_title"> {item.result.title} <tr className="result_artist">{item.result.primary_artist.name}</tr>
+          </td>
+            <td className="result_artist"> {item.result.title_with_featured} 
+           <div className="options_music">*ADD TO PLAYLIST*</div>
+            </td>
+    
             </tr>
+            
            </>
-          ))}
+           )}
           </tbody>
           </Table>
-          </container>
+          
+          </div>
       );
+      
     }
   }
+
+  export {Fetchmusic}
