@@ -54,7 +54,9 @@ function Navbar1() {
             </nav>
             <body>
                 <h1>Smid en fetch metode med en tabel her.</h1>
-                  <Fetchmusic/> 
+               
+                 <Fetchmusic/> 
+   
             </body>
             </IconContext.Provider>
         </>
