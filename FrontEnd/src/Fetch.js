@@ -38,18 +38,18 @@ function Fetchmusic() {
         </tr>
         </thead>
         <tbody>
-          {items.map(item => (
+        {items.response.hits.map(item =>
             <>
-          <tr>  
+          <tr>
           <td>
-            
-            </td>
-            <td>{items.result.full_title}</td>
-            <td></td>
+          {item.result.title}</td>
+            <td> {item.result.primary_artist.name} </td>
+            <td>hello</td>
             <td></td>
             </tr>
            </>
-          ))}
+           )}
+          ))
           </tbody>
           </Table>
           </container>
