@@ -1,8 +1,7 @@
 import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
 import React, { useState,useEffect } from "react"
 import  "./fetchtable.css"
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+
 
 function Fetchmusic()   {
     const [error, setError] = useState(null);
@@ -45,7 +44,6 @@ function Fetchmusic()   {
         </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
         {items.response.hits.map(item =>
             <>
           <tr>
@@ -54,38 +52,11 @@ function Fetchmusic()   {
             <td> {item.result.primary_artist.name} </td>
             <td>hello</td>
             <td></td>
-=======
-         {items.response.hits.map(item =>
-            <>
-            
-          <tr>  
-            <td className="td_image">
-              
-              <img className="td_image" src = {item.result.header_image_thumbnail_url} ></img>
-              <tr>
-                <div className="trdiv">
-                 <button>SPOTIFY BUTTON</button> 
-                 <div>
-                   <button><a href={'https://genius.com/'+item.result.url}>LYRICS</a></button> 
-                </div>
-                </div>
-              </tr>
-            </td>
-          <td className="result_title"> {item.result.title} <tr className="result_artist">{item.result.primary_artist.name}</tr>
-          </td>
-            <td className="result_artist"> {item.result.title_with_featured} 
-           <div className="options_music">*ADD TO PLAYLIST*</div>
-            </td>
-    
->>>>>>> 13af4edeb147200d3111872013a6ee55bcb866e2
             </tr>
             
            </>
            )}
-<<<<<<< HEAD
           ))
-=======
->>>>>>> 13af4edeb147200d3111872013a6ee55bcb866e2
           </tbody>
           </Table>
           

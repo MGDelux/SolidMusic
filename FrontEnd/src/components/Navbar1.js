@@ -22,9 +22,9 @@ function Navbar1() {
                     <FaIcons.FaBars onClick={showSidebar}/>
                 </Link>
                 <Link>
-            <div class="searchbar">
-          <input class="search_input" type="text" name="Searching" placeholder="Search..." onChange={event => setSearch(event.target.value)}/>
-          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+            <div className="searchbar">
+          <input className="search_input" type="text" name="Searching" placeholder="Search..." onChange={event => setSearch(event.target.value)}/>
+          <a href="#" className="search_icon"><i className="fas fa-search"></i></a>
              </div>
              </Link>
              <Link className="nav-logout">
@@ -52,12 +52,12 @@ function Navbar1() {
                     })}
                 </ul>
             </nav>
-            <body>
-                <h1>Smid en fetch metode med en tabel her.</h1>
+        <body>
+                <h1></h1>
                
                  <Fetchmusic/> 
    
-            </body>
+        </body>
             </IconContext.Provider>
         </>
     );
