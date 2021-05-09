@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dat.sem3</groupId>
-    <artifactId>SolidMuic</artifactId>
-    <version>0.0.1</version>
+    <artifactId>SolidMusic</artifactId>
+    <version>0.0.2</version>
     <packaging>war</packaging>
 
     <name>SolidMusic</name>
