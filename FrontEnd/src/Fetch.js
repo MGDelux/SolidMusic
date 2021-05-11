@@ -5,7 +5,7 @@ import  "./fetchtable.css"
 
 
 const Searchbar = (props) => { 
-  const [inputValue, setValue] = useState('')
+  const [inputValue, setValue] = useState("")
   
   const handleChange = (event)=>{
     console.log(event.target.value)
@@ -29,16 +29,14 @@ const Searchbar = (props) => {
 
 
 
-function Fetchmusic(props)   {
+function Fetchmusic({inputValue},{handleChange})   {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     
-    console.log("Her test: " );
-    
     
     useEffect(() => {
-      fetch("http://localhost:8080/SolidCode-BackEnd/api/solidMusic/search?q=Sia")
+      fetch("http://localhost:8080/SolidCode-BackEnd/api/solidMusic/search?q=sia")
         .then(res => res.json())
         .then(
           (result) => {

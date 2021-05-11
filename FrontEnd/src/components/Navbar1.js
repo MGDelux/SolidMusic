@@ -6,6 +6,7 @@ import {SidebarData} from "./SidebarData";
 import "./Navbar.css"
 import {IconContext} from "react-icons"
 import {Fetchmusic, Searchbar} from "../Fetch";
+import {Search} from "./NewSearchBar"
 
 function Navbar1() {
     const [sidebar, setsidebar] = useState(false)
@@ -50,7 +51,7 @@ function Navbar1() {
             </nav>
         <body>
                 <h1></h1>
-                 
+                 <Search/>
    
         </body>
             </IconContext.Provider>
