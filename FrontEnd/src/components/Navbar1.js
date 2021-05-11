@@ -22,7 +22,6 @@ function Navbar1() {
                     <FaIcons.FaBars onClick={showSidebar}/>
                 </Link>
                 <Link>
-                <Searchbar/>
              </Link>
              <Link className="nav-logout">
              <FaIcons.FaKey />

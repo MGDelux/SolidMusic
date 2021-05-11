@@ -6,14 +6,9 @@
 package restAPI;
 
 import com.google.gson.Gson;
-import dto.Genius.GeniusOuterDTO;
-import dto.Spotify.SpotifyDTO;
 import dto.UserDTO;
-import facade.APIFacade;
+import entities.User;
 import facade.UserFacade;
-import static java.lang.String.format;
-import static java.util.Collections.list;
-import java.util.concurrent.ExecutionException;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
@@ -21,7 +16,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -31,7 +25,6 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 import secuirty.errorhandling.AuthenticationException;
 import utils.EntityManagerCreator;
-import utils.ThreadManager;
 
 /**
  *
@@ -57,5 +50,25 @@ public class UserResource {
          entities.User user = USER_FACADE.getUser(thisuser);
         UserDTO userDTO = new UserDTO(user);
         return gson.toJson(userDTO);
+    }
+    
+    @Path("/create")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String createUser(User user ){
+                       Gson gson = new Gson();
+
+        if (user.getUserName().isEmpty() || user.getUserPass().isEmpty()) {
+            throw new WebApplicationException(
+            Response
+            .status(BAD_REQUEST).type(MediaType.APPLICATION_JSON).entity("MISSING INFOMATION").build());
+            
+            
+        }else{
+            USER_FACADE.createUser(user);
+        }
+        return gson.toJson("User created sucessfully");
+        
     }
 }
