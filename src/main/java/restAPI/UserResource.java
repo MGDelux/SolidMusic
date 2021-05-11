@@ -74,7 +74,14 @@ public class UserResource {
             
             
         }else{
+            try{
           Ruser = USER_FACADE.createUser(user);
+            }catch(WebApplicationException e){
+                throw new WebApplicationException( Response
+            .status(BAD_REQUEST).type(MediaType.APPLICATION_JSON).entity(e.toString()).build());
+            
+            }
+            
         }
         return gson.toJson("User created sucessfully: " + Ruser.getUserName() + ", Role: " + Ruser.getRolesAsStrings());
         
