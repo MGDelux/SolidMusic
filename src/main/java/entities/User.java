@@ -1,7 +1,9 @@
 package entities;
 
+import com.google.api.client.util.DateTime;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -39,6 +41,8 @@ public class User implements Serializable {
     @JoinColumn(name = "role_name", referencedColumnName = "role_name")})
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
+    @Column(name = "creation_Date")
+  private Date creationDate;
   
   
   
@@ -65,7 +69,8 @@ public class User implements Serializable {
 
   public User(String userName, String userPass ) {
     this.userName = userName;
-    this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt(10));
+    this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt(15));
+    this.creationDate = new Date();
   }
 
     public List<PlaylistEnitity> getPlaylist() {
@@ -76,7 +81,14 @@ public class User implements Serializable {
         this.playlist = playlist;
     }
 
- 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
 
 
   public String getUserName() {
@@ -109,9 +121,10 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" + "userName=" + userName + ", userPass=" + userPass + ", roleList=" + roleList + ", playlist=" + playlist + '}';
+        return "User{" + "userName=" + userName + ", userPass=" + userPass + ", roleList=" + roleList + ", creationDate=" + creationDate + ", playlist=" + playlist + '}';
     }
 
+  
   
   
 }

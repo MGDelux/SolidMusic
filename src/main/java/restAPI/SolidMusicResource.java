@@ -6,10 +6,12 @@
 package restAPI;
 
 import com.google.gson.Gson;
-import dto.GeniusOuterDTO;
+import dto.Genius.GeniusOuterDTO;
+import dto.Spotify.SpotifyDTO;
 import facade.APIFacade;
 import static java.lang.String.format;
 import static java.util.Collections.list;
+import java.util.concurrent.ExecutionException;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -30,6 +32,31 @@ import utils.ThreadManager;
  */
 @Path("solidMusic")
 public class SolidMusicResource {
+    
+        @Path("/spotify")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String searchSpotify(@QueryParam("q") String param ) throws InterruptedException, ExecutionException{ //TODO: ROLES // DTO
+       Gson gson = new Gson();
+       SpotifyDTO dto;
+               String returnVal = " ";
+  if(param == null || param.isEmpty()){
+               throw new WebApplicationException(Response
+          .status(BAD_REQUEST)
+          .type(MediaType.APPLICATION_JSON)
+          .entity(format("Missing info please check "))
+          .build());
+           }else{
+       ThreadManager tm = new ThreadManager();
+               returnVal = tm.searchSpotifyAPI(param);
+           //  dto = gson.fromJson(returnVal, SpotifyDTO.class);
+            //   System.out.println("DTO: "+ dto);
+  }
+   return returnVal;
+  }
+    
+    
     //wip
     @Path("/search")
     @GET

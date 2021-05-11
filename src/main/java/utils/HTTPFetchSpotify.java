@@ -86,7 +86,7 @@ public static void clientCredentials_Sync() throws SpotifyWebApiException, org.a
     }
     
     
-       public  Paging<Track> fetchData() throws MalformedURLException, IOException, SpotifyWebApiException, ParseException {
+       public  String fetchData() throws MalformedURLException, IOException, SpotifyWebApiException, ParseException {
          List<ApiKeyDTO> apiKey;
         try{
             clientCredentials_Sync();  
@@ -94,14 +94,12 @@ public static void clientCredentials_Sync() throws SpotifyWebApiException, org.a
         }catch(WebApplicationException e){
             throw new WebApplicationException(Response.status(BAD_REQUEST).type(MediaType.APPLICATION_JSON).entity(format("Error with API authentication")).build());
         }
-           String paramsEncoded = java.net.URLEncoder.encode(params,"UTF-8"); //encodes String to HTML Format to avoid 505 error 
-           String baseURL = "https://api.spotify.com/v1/search?q="+paramsEncoded+"&type=track&limit=2";
          
      SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks(params).limit(2).includeExternal("audio").build();
       final Paging<Track> trackPaging = searchTracksRequest.execute();
            System.out.println(trackPaging.getTotal());
-         this.returnValue = trackPaging.toString();
-        return trackPaging;
+         this.returnValue = searchTracksRequest.getJson();
+        return returnValue;
     }
 
     @Override

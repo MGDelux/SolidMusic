@@ -6,10 +6,10 @@
 package utils;
 
 import com.google.gson.Gson;
-import dto.GeniusDTO;
-import dto.GeniusMidDTO;
-import dto.GeniusOuterDTO;
-import dto.GeniusResultDTO;
+import dto.Genius.GeniusDTO;
+import dto.Genius.GeniusMidDTO;
+import dto.Genius.GeniusOuterDTO;
+import dto.Genius.GeniusResultDTO;
 import entities.APIKeysEntity;
 import entities.Artist;
 import entities.PlaylistEnitity;
@@ -42,6 +42,14 @@ public class SetupUsers {
         }
                Gson gson = new Gson();
     EntityManager em = emf.createEntityManager();
+    ThreadManager tm = new ThreadManager();
+    em.getTransaction().begin();
+          APIKeysEntity genius_API = new APIKeysEntity("genius","uGiljUMy8gsJ3JUFJzCLFICsBIkRrxeNJz-3MHGOkXqjySzb3WxXzb5U0Zq1l3AU");
+em.persist(genius_API);
+        em.getTransaction().commit();
+
+    
+    
    List<PlaylistEnitity> list2 = new ArrayList<>();
   List<Song> songsInPlaylist2 = new ArrayList<>();
   List<PlaylistEnitity> list = new ArrayList<>();
@@ -49,23 +57,26 @@ public class SetupUsers {
       User user = new User("user", "userpw");
       User admin = new User("admin", "adminpw");
       User ali = new User ("ali","ali");
-      APIKeysEntity genius_API = new APIKeysEntity("genius","uGiljUMy8gsJ3JUFJzCLFICsBIkRrxeNJz-3MHGOkXqjySzb3WxXzb5U0Zq1l3AU");
       Artist artist = new Artist("API PATH","HEADER IMG URL","PINK GUY","URL");
        Artist artist2 = new Artist("API PATH","HEADER IMG URL","DELUX GUY","URL");
-
+       GeniusOuterDTO songenitySong;
       Song song = new Song("I WANNA FUCKING DIE","url 1","url 2","path","another url",artist);
        Song song2 = new Song("I WANNA FUCKING DIE 2","url 1","url 2","path","another url",artist);
        Song song3 = new Song("ALI IS BETTER THAN JANUS ","url 1","url 2","path","another url",artist2);
       PlaylistEnitity playlist = new PlaylistEnitity("MIN PLAYLIST 1",songsInPlaylist);
-      PlaylistEnitity playlist2 = new PlaylistEnitity("MIN PLAYLIST 2",songsInPlaylist2);
+         songenitySong = gson.fromJson(tm.searchGeniusAPI("STFU"), GeniusOuterDTO.class);
+       Song songx = new Song(songenitySong.getResponse().getHits().get(0).getResult().getFull_title(),songenitySong.getResponse().getHits().get(0).getResult().getHeader_image_thumbnail_url(),songenitySong.getResponse().getHits().get(0).getResult().getHeader_image_url(),songenitySong.getResponse().getHits().get(0).getResult().getPath(),songenitySong.getResponse().getHits().get(0).getResult().getUrl(),new Artist(songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getApi_path(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getHeader_image_url(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getName(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getUrl()));
+      songsInPlaylist.add(songx);
+      songsInPlaylist.add(song);
+      songsInPlaylist.add(song2);
+       songsInPlaylist.add(song3);
  
-      
+      list.add(playlist);
       
       
     
           em.getTransaction().begin();
-     em.persist(genius_API);
-     
+     user.setPlaylist(list);
       Role userRole = new Role("user");
       Role adminRole = new Role("admin");
       user.addRole(userRole);
@@ -75,7 +86,6 @@ public class SetupUsers {
       em.persist(user);
        em.persist(admin);
         em.getTransaction().commit();
-          ThreadManager tm = new ThreadManager();
             
               
         //EXAMPLE PROCESS OF GETTING MUSIC QUERY   
@@ -126,7 +136,9 @@ public class SetupUsers {
           System.out.println("Testing user PW " + user.verifyPassword("userpw"));
           System.out.println("Testing admin PW: " + admin.verifyPassword("adminpw"));
           
-
     
+
+            System.out.println("enitiy song "+ songenitySong);
+
     }
 }
