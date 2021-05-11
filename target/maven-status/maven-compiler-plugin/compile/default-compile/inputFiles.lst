@@ -18,6 +18,7 @@ C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\security\Logi
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\dto\ApiKeyDTO.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\cors\CorsFilter.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\errorhandling\GenericExceptionMapper.java
+C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\restAPI\UserResource.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\errorhandling\API_Exception.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\utils\HTTPFetchGenius.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\entities\Role.java
@@ -26,11 +27,11 @@ C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\dto\Spotify\S
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\restAPI\SolidMusicResource.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\facade\UserFacade.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\utils\ThreadManager.java
+C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\dto\UserDTO.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\errorhandling\NotFoundException.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\entities\Song.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\secuirty\errorhandling\NotAuthorizedExceptionMapper.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\security\RolesAllowedFilter.java
-C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\restAPI\User.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\entities\Artist.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\errorhandling\ExceptionDTO.java
 C:\Users\mathi\Documents\NetBeansProjects\SolidMusic\src\main\java\restAPI\PlaylistResource.java

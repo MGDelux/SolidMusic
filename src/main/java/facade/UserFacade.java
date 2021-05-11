@@ -1,5 +1,6 @@
 package facade;
 
+import entities.Role;
 import entities.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -58,12 +59,15 @@ public class UserFacade {
 
     
  
-    public void createUser(User user) {
+    public User createUser(User user) {
       EntityManager em = emf.createEntityManager();
+            Role userRole = new Role("user");
       User createUser = new User(user.getUserName(),user.getUserPass());
+      createUser.addRole(userRole);
       em.getTransaction().begin();
       em.persist(createUser);
       em.getTransaction().commit();
+      return createUser;
       }
     
     

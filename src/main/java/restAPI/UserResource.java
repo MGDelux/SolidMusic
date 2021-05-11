@@ -7,9 +7,13 @@ package restAPI;
 
 import com.google.gson.Gson;
 import dto.UserDTO;
+import entities.APIKeysEntity;
+import entities.Role;
 import entities.User;
 import facade.UserFacade;
+import java.util.concurrent.ExecutionException;
 import javax.annotation.security.RolesAllowed;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -25,6 +29,8 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 import secuirty.errorhandling.AuthenticationException;
 import utils.EntityManagerCreator;
+import utils.SetupUsers;
+import static utils.SetupUsers.emf;
 
 /**
  *
@@ -56,8 +62,10 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+ 
     public String createUser(User user ){
                        Gson gson = new Gson();
+                       User Ruser;
 
         if (user.getUserName().isEmpty() || user.getUserPass().isEmpty()) {
             throw new WebApplicationException(
@@ -66,9 +74,9 @@ public class UserResource {
             
             
         }else{
-            USER_FACADE.createUser(user);
+          Ruser = USER_FACADE.createUser(user);
         }
-        return gson.toJson("User created sucessfully");
+        return gson.toJson("User created sucessfully: " + Ruser.getUserName() + ", Role: " + Ruser.getRolesAsStrings());
         
     }
 }
