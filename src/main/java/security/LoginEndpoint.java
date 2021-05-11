@@ -49,7 +49,7 @@ public class LoginEndpoint {
         } catch (Exception e) {
            throw new API_Exception("Malformed JSON Suplied",400,e);
         }
-
+//testing
         try {
             User user = USER_FACADE.getVeryfiedUser(username, password);
             String token = createToken(username, user.getRolesAsStrings());
