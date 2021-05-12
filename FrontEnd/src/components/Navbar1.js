@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import {SidebarData} from "./SidebarData";
 import "./Navbar.css"
 import {IconContext} from "react-icons"
-import {Fetchmusic, Searchbar} from "../Fetch";
 import {Search} from "./NewSearchBar"
 
 function Navbar1() {
@@ -20,8 +19,6 @@ function Navbar1() {
             <div className="navbar">
                 <Link to="#" className="menu-bars">
                     <FaIcons.FaBars onClick={showSidebar}/>
-                </Link>
-                <Link>
              </Link>
              <Link className="nav-logout">
              <FaIcons.FaKey />

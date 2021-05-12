@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react"
+import facade from "../apiFacade"
 import  "./fetchtable.css"
-import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
 
 
 const Search = () => {
     const[searchterm, SetsearchTerm] = useState("Sia")
     const[items, Setitems] = useState([])
-    const [isLoaded, setIsLoaded] = useState(false);
 
 
     useEffect(() => {
+     const timer = setTimeout(() => {
         const search = async() => {
 await fetch("https://solidcode.xyz/SolidMusic/api/solidMusic/search?q="+searchterm)
 .then(res => res.json())
@@ -23,8 +23,10 @@ await fetch("https://solidcode.xyz/SolidMusic/api/solidMusic/search?q="+searchte
 if(searchterm){
     search()
 }
-
+},400);
+return() =>clearTimeout(timer);
 },[searchterm])
+
 const resultMap = items.map(item =>{
     return (
     
@@ -44,26 +46,27 @@ const resultMap = items.map(item =>{
       <td className="result_title"> {item.result.title} <tr className="result_artist">{item.result.primary_artist.name}</tr>
       </td>
         <td className="result_artist"> {item.result.title_with_featured} 
-       <div className="options_music">*ADD TO PLAYLIST*</div>
+       <div className="options_music">
+           <button onClick={facade.playlist}>*ADD TO PLAYLIST*</button></div>
         </td>
 
         </tr>
     )
 })
 return (
-<div>
-      <div className="ui_form">
-        <div className="field">
-          <label className="owo">MAKE IT LOOK GOOD :)</label>
+
+     <> 
+        <div className="searchbar">
+          <label className="searchbar">Search Music:</label>
           <input
-            className="input"
+            className="search_input"
             value={searchterm}
             onChange={e => SetsearchTerm(e.target.value)}
           />
+          <a href="#" className="search_icon"><i className="fas fa-search"></i></a>
         </div>
-      </div>
-      <div>
-        </div>
+      
+     
       <div className="div-table">
           <thead>
           <tr>
@@ -76,8 +79,25 @@ return (
           {resultMap}
           
       </div>
-    </div>
+    </>
 )
 }
+
+
+const playlist = () => {
+
+const [token, setToken] = usestate("");
+const [data, setData] = usestate({});
+
+
+useEffect(() => {
+if(localStorage.getItem("jwtToken")){
+    setToken(localStorage.getItem("jwtToken"))
+}
+
+}, [])
+
+}
+
 
 export {Search}
