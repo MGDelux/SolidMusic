@@ -6,8 +6,10 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,13 +32,16 @@ public class PlaylistEnitity implements Serializable {
     //TODO Description
     @OneToMany(targetEntity = Song.class,cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
     private List<Song> songs;
-
+    @Column(name = "creation_Date")
+    private Date creationDate;
+  
     public PlaylistEnitity() {
     }
 
     public PlaylistEnitity(String name, List<Song> songs) {
         this.name = name;
         this.songs = songs;
+        this.creationDate = new Date();
     }
 
     public String getName() {
@@ -55,6 +60,10 @@ public class PlaylistEnitity implements Serializable {
         this.songs = songs;
     }
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
   
     
     
@@ -69,9 +78,10 @@ public class PlaylistEnitity implements Serializable {
 
     @Override
     public String toString() {
-        return "PlaylistEnitity{" + "id=" + id + ", name=" + name + ", songs=" + songs + '}';
+        return "PlaylistEnitity{" + "id=" + id + ", name=" + name + ", songs=" + songs + ", creationDate=" + creationDate + '}';
     }
 
+   
  
  
 }
