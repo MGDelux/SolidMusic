@@ -46,6 +46,7 @@ public class LoginEndpoint {
             JsonObject json = JsonParser.parseString(jsonString).getAsJsonObject();
             username = json.get("username").getAsString();
             password = json.get("password").getAsString();
+            System.out.println(username+password);
         } catch (Exception e) {
            throw new API_Exception("Malformed JSON Suplied",400,e);
         }
@@ -64,7 +65,7 @@ public class LoginEndpoint {
             }
             Logger.getLogger(GenericExceptionMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
-        throw new AuthenticationException("Invalid username or password! Please try again");
+        throw new AuthenticationException("Invalid username or password! Please try again" );
     }
 
     private String createToken(String userName, List<String> roles) throws JOSEException {
