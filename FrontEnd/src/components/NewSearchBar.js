@@ -15,6 +15,8 @@ fetch("http://localhost:8080/SolidCode-BackEnd/api/solidMusic/search?q="+searcht
     console.log(items)
     console.log(items.response)
     console.log(items.response.hits)
+    setIsLoaded(true);
+    
 }
 )
 
