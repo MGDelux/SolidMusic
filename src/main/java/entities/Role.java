@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
@@ -28,7 +29,7 @@ public class Role implements Serializable {
     @Column(name = "role_name", length = 20)
     private String roleName;
     
-    @ManyToMany(mappedBy = "roleList")
+    @ManyToMany(mappedBy = "roleList", fetch=FetchType.EAGER)
     private List<User> userList;
 
     public Role() {
@@ -52,6 +53,9 @@ public class Role implements Serializable {
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }   
+    public void addUserList(User user) {
+        this.userList.add(user);
     }   
 
     @Override

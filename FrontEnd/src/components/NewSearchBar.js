@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import  "./fetchtable.css"
 import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
-
+import log from './playlist';
 
 const Search = () => {
     const[searchterm, SetsearchTerm] = useState("Sia")
@@ -44,7 +44,7 @@ const resultMap = items.map(item =>{
       <td className="result_title"> {item.result.title} <tr className="result_artist">{item.result.primary_artist.name}</tr>
       </td>
         <td className="result_artist"> {item.result.title_with_featured} 
-       <div className="options_music">*ADD TO PLAYLIST*</div>
+       <button onClick={log.bind(this,item)}>smilebois</button>
         </td>
 
         </tr>
