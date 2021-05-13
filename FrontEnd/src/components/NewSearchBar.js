@@ -1,6 +1,8 @@
+import { render } from "@testing-library/react"
 import React, { useState, useEffect } from "react"
 import facade from "../apiFacade"
 import  "./fetchtable.css"
+import addToPlayList from './playlist';
 
 
 const Search = () => {
@@ -47,7 +49,9 @@ const resultMap = items.map(item =>{
       </td>
         <td className="result_artist"> {item.result.title_with_featured} 
        <div className="options_music">
-           <button onClick={facade.playlist}>*ADD TO PLAYLIST*</button></div>
+       <button onClick={addToPlayList.bind(this,item)}>smilebois</button>
+
+           </div>
         </td>
 
         </tr>
@@ -84,7 +88,7 @@ return (
 }
 
 
-const playlist = () => {
+/*const playlist = () => {
 
 const [token, setToken] = usestate("");
 const [data, setData] = usestate({});
@@ -97,7 +101,7 @@ if(localStorage.getItem("jwtToken")){
 
 }, [])
 
-}
+}*/
 
 
 export {Search}
