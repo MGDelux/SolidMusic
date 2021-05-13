@@ -19,7 +19,7 @@ public class UserFacade {
 
     private static EntityManagerFactory emf;
     private static UserFacade instance;
-
+      private static int counter;
     private UserFacade() {
     }
 
@@ -69,12 +69,17 @@ public class UserFacade {
  
     public User createUser(User user) {
         try{
-      EntityManager em = emf.createEntityManager();
-      Role userRole = new Role("user");
+             EntityManager em = emf.createEntityManager();
       User createUser = new User(user.getUserName(),user.getUserPass());
-      createUser.addRole(userRole);
-      em.getTransaction().begin();
-      em.persist(createUser);
+        Role userRole;
+          userRole = em.find(Role.class, "user");
+  
+          em.getTransaction().begin();
+                  createUser.addRole(userRole);
+                  em.persist(createUser);
+                  em.persist(userRole);       
+            //  userRole.setUserList(userList);
+            
       em.getTransaction().commit();
        return createUser;
         }catch(WebApplicationException e){
