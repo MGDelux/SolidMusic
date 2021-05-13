@@ -32,18 +32,21 @@ public class Song implements Serializable {
     
     @OneToOne(cascade = CascadeType.PERSIST)
     private Artist artist;
+  
 
     public Song() {
     }
 
-    public Song(String full_title, String header_image_thumbnail_url, String header_image_url, String path, String url, Artist artist) {
+    public Song(String full_title, String header_image_thumbnail_url, String header_image_url, String path, String url, Artist artist ) {
         this.full_title = full_title;
         this.header_image_thumbnail_url = header_image_thumbnail_url;
         this.header_image_url = header_image_url;
         this.path = path;
         this.url = url;
         this.artist = artist;
+     
     }
+
 
     public Long getId() {
         return id;
@@ -105,8 +108,9 @@ public class Song implements Serializable {
     public String toString() {
         return "Song{" + "id=" + id + ", full_title=" + full_title + ", header_image_thumbnail_url=" + header_image_thumbnail_url + ", header_image_url=" + header_image_url + ", path=" + path + ", url=" + url + ", artist=" + artist + '}';
     }
+
+   
     
-    
-    
+   
     
 }

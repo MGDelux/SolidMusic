@@ -4,7 +4,7 @@ function addToPlayList(message) {
   const token = localStorage.getItem('jwtToken')
   console.log("updated",message);
   console.log(token)
-  const options = makeOptions("POST", true,{playlist: message });
+  const options = makeOptions("POST", true,{SelectedSong: message });
   return fetch(URL+"/api/playlist/addsong",options) 
 }
 const getToken = () => {

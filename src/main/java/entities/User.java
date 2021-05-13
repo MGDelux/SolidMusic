@@ -16,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -43,11 +44,9 @@ public class User implements Serializable {
   private List<Role> roleList = new ArrayList<>();
     @Column(name = "creation_Date")
   private Date creationDate;
-  
-  
-  
-  @OneToMany(targetEntity = PlaylistEnitity.class,cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
-  private List<PlaylistEnitity> playlist;
+    @OneToOne(cascade = CascadeType.ALL)
+     @JoinColumn(name = "playlist_name")   
+  private PlaylistEnitity playlist;
 
   public List<String> getRolesAsStrings() {
     if (roleList.isEmpty()) {
@@ -73,13 +72,15 @@ public class User implements Serializable {
     this.creationDate = new Date();
   }
 
-    public List<PlaylistEnitity> getPlaylist() {
+    public PlaylistEnitity getPlaylist() {
         return playlist;
     }
 
-    public void setPlaylist(List<PlaylistEnitity> playlist) {
+    public void setPlaylist(PlaylistEnitity playlist) {
         this.playlist = playlist;
     }
+
+  
 
     public Date getCreationDate() {
         return creationDate;
@@ -124,6 +125,7 @@ public class User implements Serializable {
         return "User{" + "userName=" + userName + ", userPass=" + userPass + ", roleList=" + roleList + ", creationDate=" + creationDate + ", playlist=" + playlist + '}';
     }
 
+   
   
   
   

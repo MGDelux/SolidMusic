@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class UserDTO {
     private String userName;
-    private List<PlaylistEnitity> playlist;
+    private PlaylistEnitity playlist;
 
     public String getUserName() {
         return userName;
@@ -25,14 +25,15 @@ public class UserDTO {
         this.userName = userName;
     }
 
-    public List<PlaylistEnitity> getPlaylist() {
+    public PlaylistEnitity getPlaylist() {
         return playlist;
     }
 
-    public void setPlaylist(List<PlaylistEnitity> playlist) {
+    public void setPlaylist(PlaylistEnitity playlist) {
         this.playlist = playlist;
     }
 
+ 
     public UserDTO(User user) {
         this.userName = user.getUserName();
         this.playlist = user.getPlaylist();

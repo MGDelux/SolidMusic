@@ -60,10 +60,12 @@ em.persist(genius_API);
       Artist artist = new Artist("API PATH","HEADER IMG URL","PINK GUY","URL");
        Artist artist2 = new Artist("API PATH","HEADER IMG URL","DELUX GUY","URL");
        GeniusOuterDTO songenitySong;
+       PlaylistEnitity playlist2 = new PlaylistEnitity("ADMIN PLAYLIST",songsInPlaylist,admin);
+
+             PlaylistEnitity playlist = new PlaylistEnitity("MIN PLAYLIST 1",songsInPlaylist,user);
       Song song = new Song("I WANNA FUCKING DIE","url 1","url 2","path","another url",artist);
        Song song2 = new Song("I WANNA FUCKING DIE 2","url 1","url 2","path","another url",artist);
        Song song3 = new Song("ALI IS BETTER THAN JANUS ","url 1","url 2","path","another url",artist2);
-      PlaylistEnitity playlist = new PlaylistEnitity("MIN PLAYLIST 1",songsInPlaylist);
          songenitySong = gson.fromJson(tm.searchGeniusAPI("STFU"), GeniusOuterDTO.class);
        Song songx = new Song(songenitySong.getResponse().getHits().get(0).getResult().getFull_title(),songenitySong.getResponse().getHits().get(0).getResult().getHeader_image_thumbnail_url(),songenitySong.getResponse().getHits().get(0).getResult().getHeader_image_url(),songenitySong.getResponse().getHits().get(0).getResult().getPath(),songenitySong.getResponse().getHits().get(0).getResult().getUrl(),new Artist(songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getApi_path(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getHeader_image_url(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getName(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getUrl()));
       songsInPlaylist.add(songx);
@@ -74,9 +76,12 @@ em.persist(genius_API);
       list.add(playlist);
       
       
-    
+        System.out.println("hi: "+ playlist);
           em.getTransaction().begin();
-     user.setPlaylist(list);
+          playlist2.setOwner(admin);
+                playlist.setOwner(user);
+          user.setPlaylist(playlist);
+          admin.setPlaylist(playlist2);
       Role userRole = new Role("user");
       Role adminRole = new Role("admin");
       user.addRole(userRole);
@@ -94,7 +99,7 @@ em.persist(genius_API);
         GeniusOuterDTO dto;
         //Turn into DTO
        dto =  gson.fromJson(return_val, GeniusOuterDTO.class);
-       
+       /*
        //get (all) title & artist fromt query
        List<String> getAllTitle = new ArrayList<>();
        List<String> getAllArtist = new ArrayList<>();
@@ -109,6 +114,8 @@ em.persist(genius_API);
         System.out.println("ALL ARTIST: "+ getAllArtist.toString()); 
        
         // get "first" hit title & artist #0
+        
+        
         String firstHitTitle;
         String firstHitArtist;
        firstHitTitle = geniushits.get(0).getResult().getTitle();
@@ -129,14 +136,18 @@ em.persist(genius_API);
                     
 
        
-
+*/
+        System.out.println("STACK OVERFLOW:");
          System.out.println("PW1: " + user.getUserPass());
          System.out.println("PW2: " + admin.getUserPass());
-         System.out.println(user);
           System.out.println("Testing user PW " + user.verifyPassword("test"));
           System.out.println("Testing admin PW: " + admin.verifyPassword("adminpw"));
-          
-    
+          System.out.println("##############");
+          System.out.println("playlist: "+ playlist.getName() + " owner: " +playlist.getOwner().getUserName());
+          System.out.println("playlist: "+ playlist2.getName() + " owner: " +playlist2.getOwner().getUserName());
+System.out.println("--");
+         System.out.println("user enitity get admin playlist: "+admin.getPlaylist().getName());
+          System.out.println("##############");
 
             System.out.println("enitiy song "+ songenitySong);
 
