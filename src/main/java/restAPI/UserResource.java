@@ -7,13 +7,9 @@ package restAPI;
 
 import com.google.gson.Gson;
 import dto.UserDTO;
-import entities.APIKeysEntity;
-import entities.Role;
 import entities.User;
 import facade.UserFacade;
-import java.util.concurrent.ExecutionException;
 import javax.annotation.security.RolesAllowed;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -29,8 +25,6 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 import secuirty.errorhandling.AuthenticationException;
 import utils.EntityManagerCreator;
-import utils.SetupUsers;
-import static utils.SetupUsers.emf;
 
 /**
  *

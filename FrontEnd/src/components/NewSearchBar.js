@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import facade from "../apiFacade"
 import  "./fetchtable.css"
 import addToPlayList from './playlist';
 
@@ -8,10 +7,10 @@ import addToPlayList from './playlist';
 const Search = () => {
     const[searchterm, SetsearchTerm] = useState("Sia")
     const[items, Setitems] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false);
 
 
     useEffect(() => {
-     const timer = setTimeout(() => {
         const search = async() => {
 await fetch("https://solidcode.xyz/SolidMusic/api/solidMusic/search?q="+searchterm)
 .then(res => res.json())
@@ -25,10 +24,8 @@ await fetch("https://solidcode.xyz/SolidMusic/api/solidMusic/search?q="+searchte
 if(searchterm){
     search()
 }
-},400);
-return() =>clearTimeout(timer);
-},[searchterm])
 
+},[searchterm])
 const resultMap = items.map(item =>{
     return (
       <>
@@ -63,11 +60,10 @@ return (
         <div className="searchbar">
           <label className="searchbar1">Search Music:</label>
           <input
-            className="search_input"
+            className="input"
             value={searchterm}
             onChange={e => SetsearchTerm(e.target.value)}
           />
-          <a href="#" className="search_icon"><i className="fas fa-search"></i></a>
         </div>
 
       <br></br>
@@ -84,25 +80,8 @@ return (
           {resultMap}
           
       </div>
-    </>
+   </>
 )
 }
-
-
-/*const playlist = () => {
-
-const [token, setToken] = usestate("");
-const [data, setData] = usestate({});
-
-
-useEffect(() => {
-if(localStorage.getItem("jwtToken")){
-    setToken(localStorage.getItem("jwtToken"))
-}
-
-}, [])
-
-}*/
-
 
 export {Search}
