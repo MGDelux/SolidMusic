@@ -46,7 +46,6 @@ public class PlaylistResource {
       try {
 
         String thisuser = securityContext.getUserPrincipal().getName();
-          System.out.println(thisuser);
          User user;
          user = USER_FACADE.getUser(thisuser);
          USER_FACADE.addPlayListToUser(param, user);
@@ -55,9 +54,21 @@ public class PlaylistResource {
           System.out.println(e.toString());
            //TODO throw new WebApplicationException
       }
-            return "SUCK MY DICK";
+            return "Not implemented";
     }
-    
+     @Path("/get")
+     @POST
+     @Produces({MediaType.APPLICATION_JSON})
+     @Consumes(MediaType.APPLICATION_JSON)
+     @RolesAllowed("user")
+    public String getUserPlaylist() throws AuthenticationException{
+                       Gson gson = new Gson();
+
+         String thisuser = securityContext.getUserPrincipal().getName();
+             User user;
+             user = USER_FACADE.getUser(thisuser);
+             return gson.toJson(user.getPlaylist());
+    }
     
     //wip
     @Path("/new")
