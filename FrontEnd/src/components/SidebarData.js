@@ -11,13 +11,13 @@ export const SidebarData = [
 },
 {
     title: "Profile",
-    path: "/Profile",
+    path: "/profile",
     icon: <AiIcons.AiFillProfile />,
     cName: "nav-text"
 },
 {
     title: "Playlist",
-    path: "/Playlist",
+    path: "/playlist",
     icon: <AiIcons.AiFillFolderAdd />,
     cName: "nav-text"
 }

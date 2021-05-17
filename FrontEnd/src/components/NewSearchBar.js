@@ -1,17 +1,9 @@
-import { render } from "@testing-library/react"
 import React, { useState, useEffect } from "react"
 import facade from "../apiFacade"
 import  "./fetchtable.css"
-<<<<<<< HEAD
 import addToPlayList from './playlist';
-=======
-<<<<<<< HEAD
-import {button, Breadcrumb, Card, Form, Container, Row, Col,Table} from "react-bootstrap"
-import log from './playlist';
-=======
->>>>>>> 10787fa6d39179612bcb145feeb3c4f0e1ea7c34
 
->>>>>>> 046238bf06d6f6ee85faeaabd4c724018fd2fab9
+
 
 const Search = () => {
     const[searchterm, SetsearchTerm] = useState("Sia")
@@ -39,7 +31,8 @@ return() =>clearTimeout(timer);
 
 const resultMap = items.map(item =>{
     return (
-    
+      <>
+   
         <tr>  
         <td className="td_image">
           
@@ -56,28 +49,19 @@ const resultMap = items.map(item =>{
       <td className="result_title"> {item.result.title} <tr className="result_artist">{item.result.primary_artist.name}</tr>
       </td>
         <td className="result_artist"> {item.result.title_with_featured} 
-<<<<<<< HEAD
-       <button onClick={log.bind(this,item)}>smilebois</button>
-=======
        <div className="options_music">
-<<<<<<< HEAD
-       <button onClick={addToPlayList.bind(this,item)}>smilebois</button>
-
+       <button onClick={addToPlayList.bind(this,item)}>*ADD TO PLAYLIST*</button>
            </div>
-=======
-           <button onClick={facade.playlist}>*ADD TO PLAYLIST*</button></div>
->>>>>>> 046238bf06d6f6ee85faeaabd4c724018fd2fab9
->>>>>>> 10787fa6d39179612bcb145feeb3c4f0e1ea7c34
         </td>
-
         </tr>
+        </>
     )
 })
 return (
 
      <> 
         <div className="searchbar">
-          <label className="searchbar">Search Music:</label>
+          <label className="searchbar1">Search Music:</label>
           <input
             className="search_input"
             value={searchterm}
@@ -85,8 +69,9 @@ return (
           />
           <a href="#" className="search_icon"><i className="fas fa-search"></i></a>
         </div>
-      
-     
+
+      <br></br>
+
       <div className="div-table">
           <thead>
           <tr>
