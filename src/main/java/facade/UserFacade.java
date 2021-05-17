@@ -82,7 +82,7 @@ public class UserFacade {
       Song newSong = new Song(song_new.getSelectedSong().getResult().getFull_title(),song_new.getSelectedSong().getResult().getHeader_image_thumbnail_url(),song_new.getSelectedSong().getResult().getHeader_image_url(),song_new.getSelectedSong().getResult().getPath(),song_new.getSelectedSong().getResult().getUrl(), new Artist(song_new.getSelectedSong().getResult().getPrimary_artist().getApi_path(),song_new.getSelectedSong().getResult().getPrimary_artist().getHeader_image_url(),song_new.getSelectedSong().getResult().getPrimary_artist().getName(),song_new.getSelectedSong().getResult().getPrimary_artist().getName()));
       playlist.addSong(newSong);
       em.getTransaction().begin();
-     em.merge(playlist);
+       em.merge(playlist);
            em.getTransaction().commit();
 
 
@@ -98,14 +98,22 @@ public class UserFacade {
         try{
              EntityManager em = emf.createEntityManager();
       User createUser = new User(user.getUserName(),user.getUserPass());
+        List<Song> songsInPlaylist = new ArrayList<>();
         Role userRole;
           userRole = em.find(Role.class, "user");
-  
+           PlaylistEnitity playlist = new PlaylistEnitity(user.getUserName() + " playlist",createUser);
+           playlist.setSongs(songsInPlaylist);
+           createUser.setPlaylist(playlist);
+           playlist.setOwner(createUser);
+
+   
           em.getTransaction().begin();
                   createUser.addRole(userRole);
-                  em.persist(createUser);
+                em.persist(createUser);
                   em.persist(userRole);       
-            //  userRole.setUserList(userList);
+
+ 
+                    
             
       em.getTransaction().commit();
        return createUser;

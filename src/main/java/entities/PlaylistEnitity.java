@@ -69,9 +69,8 @@ public class PlaylistEnitity implements Serializable {
     
     
     
-    public PlaylistEnitity(String name, List<Song> songs, User user) {
+    public PlaylistEnitity(String name, User user) {
         this.name = name;
-        this.songs = songs;
         this.creationDate = new Date();
         this.owner = user;
     }

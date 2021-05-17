@@ -30,7 +30,7 @@ import utils.EntityManagerCreator;
  *
  * @author mathi
  */
-@Path("usertest")
+@Path("users")
 public class UserResource {
      @Context
     private UriInfo context;
@@ -77,7 +77,7 @@ public class UserResource {
             }
             
         }
-        return gson.toJson("User created sucessfully: " + Ruser.getUserName() + ", Role: " + Ruser.getRolesAsStrings());
+        return gson.toJson("User created sucessfully: " + Ruser.getUserName() + ", Role: " + Ruser.getRolesAsStrings()+ " playlist: "+Ruser.getPlaylist().getName());
         
     }
 }

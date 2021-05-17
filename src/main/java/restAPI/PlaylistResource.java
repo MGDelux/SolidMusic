@@ -6,7 +6,6 @@
 package restAPI;
 
 import com.google.gson.Gson;
-import dto.UserDTO;
 import entities.Song;
 import entities.User;
 import facade.UserFacade;
@@ -24,7 +23,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
-import static restAPI.UserResource.USER_FACADE;
 import secuirty.errorhandling.AuthenticationException;
 import utils.EntityManagerCreator;
 
