@@ -7,8 +7,10 @@ package restAPI;
 
 import com.google.gson.Gson;
 import dto.UserDTO;
+import entities.Song;
 import entities.User;
 import facade.UserFacade;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManagerFactory;
@@ -66,8 +68,14 @@ public class PlaylistResource {
 
          String thisuser = securityContext.getUserPrincipal().getName();
              User user;
+            
              user = USER_FACADE.getUser(thisuser);
+<<<<<<< HEAD
              return gson.toJson("test");
+=======
+              List<Song> songs =  user.getPlaylist().getSongs();
+             return gson.toJson(songs);
+>>>>>>> 22605b617d6acc547590118ed4076332277366f0
     }
     
     //wip
