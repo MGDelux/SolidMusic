@@ -1,11 +1,33 @@
-function addToPlayList(message) {
+import React, { useState, useEffect } from "react"
+
+function Fetchplaylist(message) {
+    const[items, Setitems] = useState([])
     const URL = "http://localhost:8080/SolidCode-BackEnd";
-    const token = localStorage.getItem('jwtToken')
-    console.log("updated",message);
-    console.log(token)
-    const options = makeOptions("POST", true,{playlist: message });
-    return fetch(URL+"/api/playlist/addsong",options) 
-  }
+    const options = makeOptions("POST", true);
+
+useEffect(() => {
+    fetch(URL+"/api/playlist/get",options) 
+    .then(res => res.json())
+    .then((result) => {
+    Setitems(result)
+    console.log(result)
+    }
+    )
+  })
+  const resultMap = items.map(item =>{
+    return(
+    <>
+    <tr>
+        {items.result}
+        
+
+    </tr>
+    
+    </>
+    )
+      }
+)
+
   const getToken = () => {
     return localStorage.getItem('jwtToken')
   }
@@ -27,6 +49,7 @@ function addToPlayList(message) {
     }
     return opts;
   }
+}
+ 
   
   
-  export default addToPlayList;

@@ -7,7 +7,6 @@ import addToPlayList from './playlist';
 const Search = () => {
     const[searchterm, SetsearchTerm] = useState("Sia")
     const[items, Setitems] = useState([])
-    const [isLoaded, setIsLoaded] = useState(false);
 
 
     useEffect(() => {
@@ -57,6 +56,7 @@ const resultMap = items.map(item =>{
 return (
 
      <> 
+     <div>
         <div className="searchbar">
           <label className="searchbar1">Search Music:</label>
           <input
@@ -79,6 +79,7 @@ return (
 
           {resultMap}
           
+      </div>
       </div>
    </>
 )

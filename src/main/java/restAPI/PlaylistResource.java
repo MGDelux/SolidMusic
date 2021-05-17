@@ -67,7 +67,7 @@ public class PlaylistResource {
          String thisuser = securityContext.getUserPrincipal().getName();
              User user;
              user = USER_FACADE.getUser(thisuser);
-             return gson.toJson(user.getPlaylist());
+             return gson.toJson("test");
     }
     
     //wip

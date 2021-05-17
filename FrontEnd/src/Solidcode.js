@@ -4,6 +4,7 @@ import Navbar1 from "./components/Navbar1"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import "./Solidcode.css"
 import {Search} from "./components/NewSearchBar"
+import Fetchplaylist from "./components/Fetchplaylist"
 
 
 
