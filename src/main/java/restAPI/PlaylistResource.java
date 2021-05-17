@@ -44,7 +44,7 @@ public class PlaylistResource {
     @Consumes(MediaType.APPLICATION_JSON)
         @RolesAllowed("user")
 
-    public String searchSpotify(String param ) throws InterruptedException, ExecutionException, AuthenticationException{ //TODO: ROLES // DTO
+    public String addSong(String param ) throws InterruptedException, ExecutionException, AuthenticationException{ //TODO: ROLES // DTO
       try {
 
         String thisuser = securityContext.getUserPrincipal().getName();
@@ -59,13 +59,12 @@ public class PlaylistResource {
             return "Not implemented";
     }
      @Path("/get")
-     @POST
+     @GET
      @Produces({MediaType.APPLICATION_JSON})
      @Consumes(MediaType.APPLICATION_JSON)
      @RolesAllowed("user")
     public String getUserPlaylist() throws AuthenticationException{
                        Gson gson = new Gson();
-
          String thisuser = securityContext.getUserPrincipal().getName();
              User user;
             

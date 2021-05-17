@@ -7,11 +7,9 @@ import addToPlayList from './playlist';
 const Search = () => {
     const[searchterm, SetsearchTerm] = useState("Sia")
     const[items, Setitems] = useState([])
-    const [isLoaded, setIsLoaded] = useState(false);
 
 
-    useEffect(() => {
-        const search = async() => {
+    useEffect(() => {    const search = async() => {
 await fetch("https://solidcode.xyz/SolidMusic/api/solidMusic/search?q="+searchterm)
 .then(res => res.json())
 .then((result)=> {
@@ -60,7 +58,7 @@ return (
         <div className="searchbar">
           <label className="searchbar1">Search Music:</label>
           <input
-            className="input"
+            className="search_input"
             value={searchterm}
             onChange={e => SetsearchTerm(e.target.value)}
           />
