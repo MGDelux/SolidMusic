@@ -55,9 +55,13 @@ const resultMap = items.map(item =>{
       </td>
         <td className="result_artist"> {item.result.title_with_featured} 
        <div className="options_music">
+<<<<<<< HEAD
        <button className="addToPlaylistButton" onClick={addToPlayList.bind(this,item)}>Add: '{item.result.title}' to your playlist </button>
 
 
+=======
+       <button className="addToPlaylistButton" onClick={addToPlayList.bind(this,item), notify}>Add: '{item.result.title}' to your playlist </button>
+>>>>>>> ce024666ca0f0efe163b27ab435a5f4579cede1f
            </div>
         </td>
         
