@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css"
 toast.configure()
 
 const Search = () => {
-    const[searchterm, SetsearchTerm] = useState("Sia")
+    const[searchterm, SetsearchTerm] = useState("Overkill")
     const[items, Setitems] = useState([])
     
     const notify = () => {
@@ -55,11 +55,9 @@ const resultMap = items.map(item =>{
       </td>
         <td className="result_artist"> {item.result.title_with_featured} 
        <div className="options_music">
-<<<<<<< HEAD
        <button className="addToPlaylistButton" onClick={addToPlayList.bind(this,item)}>Add: '{item.result.title}' to your playlist </button>
-=======
-       <button onClick={addToPlayList.bind(this,item),notify}>*ADD TO PLAYLIST*</button>
->>>>>>> 9a71110e42cab828b856d62c83045407dd590751
+
+
            </div>
         </td>
         
