@@ -82,7 +82,6 @@ function App() {
     <div>
       {!loggedIn ? (<LogIn login={login} />) :
         (<div>
-          <button onClick={logout}>Logout</button>
           <LoggedIn />
           
         </div>)}

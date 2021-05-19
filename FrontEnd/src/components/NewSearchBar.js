@@ -26,9 +26,11 @@ if(searchterm){
 },[searchterm])
 const resultMap = items.map(item =>{
     return (
+      
       <>
-   
+  
         <tr>  
+ 
         <td className="td_image">
           
           <img className="td_image" src = {item.result.header_image_thumbnail_url} ></img>
@@ -45,18 +47,21 @@ const resultMap = items.map(item =>{
       </td>
         <td className="result_artist"> {item.result.title_with_featured} 
        <div className="options_music">
-       <button onClick={addToPlayList.bind(this,item)}>*ADD TO PLAYLIST*</button>
+       <button className="addToPlaylistButton" onClick={addToPlayList.bind(this,item)}>Add: '{item.result.title}' to your playlist </button>
            </div>
         </td>
+        
         </tr>
+        
         </>
     )
 })
 return (
 
      <> 
+     <br></br>
         <div className="searchbar">
-          <label className="searchbar1">Search Music:</label>
+          <label className="searchbar1">Search:</label>
           <input
             className="search_input"
             value={searchterm}
@@ -74,9 +79,9 @@ return (
              <th scope="col"></th>
         </tr>
         </thead>
-
+        <hr></hr>
           {resultMap}
-          
+          <hr></hr>
       </div>
    </>
 )
