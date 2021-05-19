@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react"
 import  "./fetchtable.css"
 import addToPlayList from './playlist';
+import {toast} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 
+
+toast.configure()
 
 const Search = () => {
     const[searchterm, SetsearchTerm] = useState("Sia")
     const[items, Setitems] = useState([])
+    
+    const notify = () => {
+      toast.dark("Song added succesfully",{autoClose: 3000})
+    }
 
 
     useEffect(() => {    const search = async() => {
@@ -47,7 +55,11 @@ const resultMap = items.map(item =>{
       </td>
         <td className="result_artist"> {item.result.title_with_featured} 
        <div className="options_music">
+<<<<<<< HEAD
        <button className="addToPlaylistButton" onClick={addToPlayList.bind(this,item)}>Add: '{item.result.title}' to your playlist </button>
+=======
+       <button onClick={addToPlayList.bind(this,item),notify}>*ADD TO PLAYLIST*</button>
+>>>>>>> 9a71110e42cab828b856d62c83045407dd590751
            </div>
         </td>
         
