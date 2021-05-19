@@ -2,6 +2,14 @@
 .BackGround{
   background-color: black;
 }
+body
+{
+  background: rgb(222,212,66);
+  background: -moz-linear-gradient(83deg, rgba(222,212,66,1) 0%, rgba(209,182,80,1) 100%);
+  background: -webkit-linear-gradient(83deg, rgba(222,212,66,1) 0%, rgba(209,182,80,1) 100%);
+  background: linear-gradient(83deg, rgba(222,212,66,1) 0%, rgba(209,182,80,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ded442",endColorstr="#d1b650",GradientType=1);
+}
 
 .login-form{
   width: 50%;

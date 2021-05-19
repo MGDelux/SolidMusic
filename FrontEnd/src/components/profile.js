@@ -16,7 +16,7 @@ const Test = () => {
           const search = async() => {
             const options = makeOptions("GET", true);
 console.log("opts: "+options)
-await fetch("http://localhost:8080/SolidCode-BackEnd/api/user/get",options)
+await fetch("https://solidcode.xyz/SolidMusic/api/user/get",options)
 .then(res => res.json())
 .then((result)=> {
     Setitems(result)

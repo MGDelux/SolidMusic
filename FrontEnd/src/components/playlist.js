@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/SolidCode-BackEnd";
+const URL = "https://solidcode.xyz/SolidMusic";
 
 
 function addToPlayList(message) {

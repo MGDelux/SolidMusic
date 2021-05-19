@@ -40,21 +40,24 @@ public class PlaylistResource {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes(MediaType.APPLICATION_JSON)
-        @RolesAllowed("user")
+      @RolesAllowed("user")
 
     public String addSong(String param ) throws InterruptedException, ExecutionException, AuthenticationException{ //TODO: ROLES // DTO
-      try {
+        Gson gson = new Gson();
+        try {
 
         String thisuser = securityContext.getUserPrincipal().getName();
          User user;
          user = USER_FACADE.getUser(thisuser);
          USER_FACADE.addPlayListToUser(param, user);
-   
+       
+     
+          System.out.println(param);
       }catch (WebApplicationException e){
           System.out.println(e.toString());
            //TODO throw new WebApplicationException
       }
-            return "Not implemented";
+            return  gson.toJson("Song added");
     }
      @Path("/get")
      @GET
