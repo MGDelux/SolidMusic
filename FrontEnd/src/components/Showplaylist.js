@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react"
 
-function Fetchplaylist(message) {
+function Showplaylist(message) {
     const[items, Setitems] = useState([])
     const URL = "http://localhost:8080/SolidCode-BackEnd";
-    const options = makeOptions("POST", true);
+    
 
 useEffect(() => {
+    const options = makeOptions("POST", true);
     fetch(URL+"/api/playlist/get",options) 
     .then(res => res.json())
     .then((result) => {
@@ -14,13 +15,13 @@ useEffect(() => {
     }
     )
   })
+
   const resultMap = items.map(item =>{
     return(
     <>
     <tr>
-        {items.result}
+        {item.result}
         
-
     </tr>
     
     </>
@@ -49,7 +50,9 @@ useEffect(() => {
     }
     return opts;
   }
+
+
 }
  
-  
+export {Showplaylist}
   

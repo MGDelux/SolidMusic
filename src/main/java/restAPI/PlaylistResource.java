@@ -70,12 +70,10 @@ public class PlaylistResource {
              User user;
             
              user = USER_FACADE.getUser(thisuser);
-<<<<<<< HEAD
-             return gson.toJson("test");
-=======
+
+
               List<Song> songs =  user.getPlaylist().getSongs();
              return gson.toJson(songs);
->>>>>>> 22605b617d6acc547590118ed4076332277366f0
     }
     
     //wip

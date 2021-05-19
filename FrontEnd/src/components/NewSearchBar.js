@@ -56,11 +56,10 @@ const resultMap = items.map(item =>{
 return (
 
      <> 
-     <div>
         <div className="searchbar">
           <label className="searchbar1">Search Music:</label>
           <input
-            className="input"
+            className="search_input"
             value={searchterm}
             onChange={e => SetsearchTerm(e.target.value)}
           />
@@ -79,7 +78,6 @@ return (
 
           {resultMap}
           
-      </div>
       </div>
    </>
 )
