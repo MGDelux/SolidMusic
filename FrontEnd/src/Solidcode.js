@@ -4,7 +4,7 @@ import Navbar1 from "./components/Navbar1"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import "./Solidcode.css"
 import {Search} from "./components/NewSearchBar"
-import {Showplaylist} from "./components/Showplaylist"
+import {Test} from './components/test'
 
 
 
@@ -43,8 +43,7 @@ function Musichome(){
         return (
             <div className="playliste">
                 <Navbar1/>
-                <h1>Playliste</h1>
-                
+                <Test/>
             </div>
         )
     }

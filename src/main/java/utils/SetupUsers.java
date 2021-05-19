@@ -60,21 +60,15 @@ em.persist(genius_API);
       Artist artist = new Artist("API PATH","HEADER IMG URL","PINK GUY","URL");
        Artist artist2 = new Artist("API PATH","HEADER IMG URL","DELUX GUY","URL");
        GeniusOuterDTO songenitySong;
-       PlaylistEnitity playlist2 = new PlaylistEnitity("ADMIN PLAYLIST",songsInPlaylist,admin);
+       PlaylistEnitity playlist2 = new PlaylistEnitity("ADMIN PLAYLIST",admin);
 
-             PlaylistEnitity playlist = new PlaylistEnitity("MIN PLAYLIST 1",songsInPlaylist,user);
-      Song song = new Song("I WANNA FUCKING DIE","url 1","url 2","path","another url",artist);
-       Song song2 = new Song("I WANNA FUCKING DIE 2","url 1","url 2","path","another url",artist);
-       Song song3 = new Song("ALI IS BETTER THAN JANUS ","url 1","url 2","path","another url",artist2);
+             PlaylistEnitity playlist = new PlaylistEnitity("MIN PLAYLIST 1",user);
          songenitySong = gson.fromJson(tm.searchGeniusAPI("STFU"), GeniusOuterDTO.class);
        Song songx = new Song(songenitySong.getResponse().getHits().get(0).getResult().getFull_title(),songenitySong.getResponse().getHits().get(0).getResult().getHeader_image_thumbnail_url(),songenitySong.getResponse().getHits().get(0).getResult().getHeader_image_url(),songenitySong.getResponse().getHits().get(0).getResult().getPath(),songenitySong.getResponse().getHits().get(0).getResult().getUrl(),new Artist(songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getApi_path(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getHeader_image_url(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getName(),songenitySong.getResponse().getHits().get(0).getResult().getPrimary_artist().getUrl()));
       songsInPlaylist.add(songx);
-      songsInPlaylist.add(song);
-      songsInPlaylist.add(song2);
-       songsInPlaylist.add(song3);
  
       list.add(playlist);
-      
+       playlist.setSongs(songsInPlaylist);
       
         System.out.println("hi: "+ playlist);
           em.getTransaction().begin();

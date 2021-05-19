@@ -9,8 +9,7 @@ const Search = () => {
     const[items, Setitems] = useState([])
 
 
-    useEffect(() => {
-        const search = async() => {
+    useEffect(() => {    const search = async() => {
 await fetch("https://solidcode.xyz/SolidMusic/api/solidMusic/search?q="+searchterm)
 .then(res => res.json())
 .then((result)=> {

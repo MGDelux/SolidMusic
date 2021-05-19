@@ -25,7 +25,7 @@ function LogIn({ login }) {
        <Card.Body>
       <form className="login-form" onChange={onChange}>
         <Card.Title>
-                <h2>SolidMusic</h2>
+                <h2>SOLID MUSIC</h2>
         </Card.Title>
         <Card.Text>
         Log in for some awesome music
@@ -34,9 +34,6 @@ function LogIn({ login }) {
                 
                     <label>Username</label>
                     <input id="username" className="form-control" placeholder="User Name" />
-                
-
-                
                     <label>Password</label>
                     <input id="password" type="password" className="form-control" placeholder="Password" />
                     

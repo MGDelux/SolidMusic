@@ -6,7 +6,7 @@
 package dto.Genius;
 
 /**
- *
+ * 3
  * @author mathi
  */
 public class GeniusResultDTO {

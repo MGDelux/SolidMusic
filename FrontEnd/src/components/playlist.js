@@ -1,3 +1,6 @@
+const URL = "https://solidcode.xyz/SolidMusic";
+
+
 function addToPlayList(message) {
     const URL = "http://localhost:8080/SolidCode-BackEnd";
     const token = localStorage.getItem('jwtToken')
@@ -27,6 +30,6 @@ function addToPlayList(message) {
     }
     return opts;
   }
-  
+
   
   export default addToPlayList;

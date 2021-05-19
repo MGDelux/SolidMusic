@@ -16,18 +16,6 @@ useEffect(() => {
     )
   })
 
-  const resultMap = items.map(item =>{
-    return(
-    <>
-    <tr>
-        {item.result}
-        
-    </tr>
-    
-    </>
-    )
-      }
-)
 
   const getToken = () => {
     return localStorage.getItem('jwtToken')
@@ -51,7 +39,18 @@ useEffect(() => {
     return opts;
   }
 
-
+  const resultMap = items.map(item =>{
+    return(
+    <>
+    <tr>
+        {item.result}
+        
+    </tr>
+    
+    </>
+    )
+      }
+)
 }
  
 export {Showplaylist}
