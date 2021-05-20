@@ -78,8 +78,6 @@ public class UserFacade {
           ToSongDTO song_new;
          Gson gson = new Gson();
          song_new = gson.fromJson(song, ToSongDTO.class);  
-            System.out.println("song: "+song);
-            System.out.println(song_new);
        
       Song newSong = new Song(song_new.getSelectedSong().getResult().getFull_title(),song_new.getSelectedSong().getResult().getHeader_image_thumbnail_url(),song_new.getSelectedSong().getResult().getHeader_image_url(),song_new.getSelectedSong().getResult().getPath(),song_new.getSelectedSong().getResult().getUrl(), new Artist(song_new.getSelectedSong().getResult().getPrimary_artist().getApi_path(),song_new.getSelectedSong().getResult().getPrimary_artist().getHeader_image_url(),song_new.getSelectedSong().getResult().getPrimary_artist().getName(),song_new.getSelectedSong().getResult().getPrimary_artist().getName()));
       playlist.addSong(newSong);
@@ -89,7 +87,6 @@ public class UserFacade {
 
 
       
-        System.out.println("humbo new playlist: "+ user.getPlaylist());
         
         }catch (WebApplicationException e){
             throw new WebApplicationException(e.toString());
