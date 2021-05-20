@@ -4,7 +4,7 @@ import addToPlayList from './playlist';
 
 
 
-const Test = () => {
+const Fetchplayliste = () => {
 
     const[items, Setitems] = useState([])
     const[searchterm, SetsearchTerm] = useState("Sia")
@@ -99,4 +99,4 @@ const makeOptions= (method,addToken) =>{
     return opts;
   }
 
-export  {Test}
+export  {Fetchplayliste}
