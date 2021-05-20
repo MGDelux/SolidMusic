@@ -77,12 +77,5 @@ public class PlaylistResource {
     }
     
     //wip
-    @Path("/new")
-    @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String search(@QueryParam("q") String param ){ //TODO: ROLES // DTO
-           return "not implemented";
-        }
 
 }
