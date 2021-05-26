@@ -4,7 +4,7 @@ Master Branch:
 [![Build Status](https://travis-ci.com/MGDelux/SolidMusic.svg?branch=master)](https://travis-ci.com/MGDelux/SolidMusic)<h1 align="center">Project CA - 3</h1>
 <h3 align="center">By Team "SolidCode"</h3>
 
-- BACK-END [page:](http://solidcode.xyz/ca-api)
+- BACK-END [page:](http://solidcode.xyz/SolidMusic)
 
 
  <h3>Requirements:</h3>
